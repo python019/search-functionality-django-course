@@ -1,42 +1,228 @@
-<!DOCTYPE html>
-{% load static %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'style.css' %}">
-</head>
-<body>
-    {% include 'details/navbar.html' %}
+{% extends 'base.html' %}
 
-    <table class="table table-striped">
-        <thead>
-          <tr>
-            <th scope="col">Ismi</th>
-            <th scope="col">Familiyasi</th>
-            <th scope="col">Yoshi</th>
-            <th scope="col">Kasbi</th>
-          </tr>
-        </thead>
-        <tbody>
-            {% for ishchi in ishchilar %}
-            <tr>
-                <td>{{ishchi.ismi}}</td>
-                <td>{{ishchi.familiyasi}}</td>
-                <td>{{ishchi.yoshi}}</td>
-                <td>{{ishchi.kasbi}}</td>
-            </tr>
-          {% endfor %}
-        </tbody>
-      </table>
-    
+{% block content %}
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+		<main id="body-inner">
 
-</body>
-</html>
+			<!-- Begin magic cursor 
+			======================== -->
+			<div id="magic-cursor">
+				<div id="ball"></div>
+			</div>
+			<!-- End magic cursor -->
+
+			<!-- Begin noise background -->
+			<div class="bg-noise"></div>
+			<!-- End noise background --> 
+
+			<div id="scroll-container"> 
+				
+				<header id="tt-header" class="tt-header-fixed">
+					<div class="tt-header-inner"> <!-- add/remove class "tt-wrap" to enable/disable element boxed layout (class "tt-boxed" is required in <body> tag!). Note: additionally you can use prepared helper class "max-width-*" to add custom width to "tt-wrap". Example: "max-width-1500" (class "tt-wrap" is still required!). More info about helper classes can be found in the file "helper.css". -->
+
+						<div class="tt-header-col">
+
+							<!-- Begin logo 
+							================ -->
+							<div class="tt-logo"> 
+								<a href="/">
+									<!-- Hint: You may need to change the img height to match your logo type. You can do this from the "theme.css" file (find: ".tt-logo img"). -->
+									<img src="assets/img/logo-light.png" class="tt-logo-light magnetic-item" alt="SUSYS"> <!-- logo light -->
+								</a>
+							</div>
+							<!-- End logo -->
+
+						</div> <!-- /.tt-header-col -->
+
+						<div class="tt-header-col">
+
+							<!-- Begin overlay menu toggle button -->
+							<div id="tt-ol-menu-toggle-btn-wrap">
+								<div class="tt-ol-menu-toggle-btn-text">
+									<span class="text-menu" data-hover="Open">Menu</span>
+									<span class="text-close">Close</span>
+								</div>
+								<div class="tt-ol-menu-toggle-btn-holder">
+									<a href="#" class="tt-ol-menu-toggle-btn magnetic-item"><span></span></a>
+								</div>
+							</div>
+							<!-- End overlay menu toggle button -->
+
+							<!-- Begin overlay menu 
+							======================== 
+							* Use class "tt-ol-menu-center" to align menu to center.
+							* Use class "tt-ol-menu-count" to enable menu counter.
+							-->
+							<nav class="tt-overlay-menu tt-ol-menu-center tt-ol-menu-count">
+								<div class="tt-ol-menu-holder">
+									<div class="tt-ol-menu-inner tt-wrap">
+										<div class="tt-ol-menu-content">
+
+											<!-- Begin menu list -->
+											<ul class="tt-ol-menu-list">
+
+												<!-- <li><a href="">Single Link</a></li> -->
+
+												<!-- Begin submenu (submenu master)
+												==================================== -->
+												<li class="tt-ol-submenu-wrap">
+													<div class="tt-ol-submenu-trigger">
+														<a href="#">Home</a>
+													</div>
+												</li>
+												<!-- End submenu (sub-master) -->
+
+											</ul>
+											<!-- End menu list -->
+
+										</div> <!-- /.tt-ol-menu-content -->
+									</div> <!-- /.tt-ol-menu-inner -->
+								</div> <!-- /.tt-ol-menu-holder -->
+
+								<!-- Begin noise background -->
+								<div class="bg-noise"></div>
+								<!-- End noise background -->
+
+							</nav> 
+							<!-- End overlay menu -->
+
+
+							<!-- Begin header tools
+							======================== -->
+							<div class="tt-header-tools">
+
+								<!-- Begin header tools item (tt-Search) -->
+								<div class="tt-header-tools-item tt-search-trigger-wrap">
+
+									<div class="tt-search-trigger">
+										<div class="tt-hti-btn tt-search-trigger-icon magnetic-item" title="Search">
+											<i class="fas fa-search"></i>
+										</div>
+									</div> <!-- /.tt-search-trigger -->
+
+									<!-- Begin tt-Search 
+									===================== -->
+									<div class="tt-search">
+										<div class="tt-search-close cursor-close">
+											<div class="bg-noise"></div>
+										</div>
+										<div class="tt-search-inner">
+											<h1 class="tt-search-title tt-search-appear">Qidirish</h1>
+
+											
+											<form class="tt-search-form tt-search-appear tt-form-minimal tt-form-lg">
+												<div class="tt-form-btn-inside">
+													<input class="tt-form-control" name="q" type="text" id="search" placeholder="Kerakli ma'lumotni yozing..." required>
+													<button type="submit"><i class="fas fa-search"></i></button>
+												</div>
+											</form>
+											
+										</div>
+
+										<div class="tt-search-ghost tt-search-appear">SUSYS</div>
+										<div class="tt-search-close-btn hide-cursor" title="Close"><i class="fas fa-times"></i></div>
+									</div>
+									<!-- End tt-Search -->
+
+								</div> 
+								<!-- End header tools item -->
+
+							</div>
+							<!-- End header tools -->
+
+						</div> <!-- /.header-col -->
+					</div> <!-- /.header-inner -->
+				</header>
+				<!-- End header -->
+
+				<div id="content-wrap">
+
+			
+					<div id="page-content">
+
+						<br><br><br><br>
+						
+						<div class="tt-section">
+							<div class="tt-section-inner tt-wrap">
+
+								<!-- Begin tt-Table 
+								==================== -->
+								<table class="tt-table">
+									<thead>
+										<tr>
+											<th>Ismi</th>
+											<th>Familiyasi</th>
+											<th>Yoshi</th>
+											<th>Kasbi</th>
+										</tr>
+									</thead>
+
+									<tbody>
+										{% for ishchi in ishchilar %}
+										<tr>
+											<td>{{ ishchi.ismi }}</td>
+											<td>{{ ishchi.familiyasi }}</td>
+											<td>{{ ishchi.yoshi }}</td>
+											<td>{{ ishchi.kasbi }}</td>
+										</tr>
+										{% endfor %}
+									</tbody>
+								</table>
+
+							</div> 
+						</div>
+
+					</div>
+					
+					<footer id="tt-footer">
+						<div class="tt-footer-inner">
+
+							<div class="footer-col tt-align-center-left">
+								<div class="footer-col-inner">
+
+									<div class="tt-btn tt-btn-link">
+										<a href="#" class="scroll-to-top" data-hover="Yuqoriga">Yuqoriga</a>
+									</div>
+
+								</div> 
+							</div>
+
+							<div class="footer-col tt-align-center order-m-last">
+								<div class="footer-col-inner">
+
+									<div class="tt-copyright">
+										© Copyright - <a href="https://www.subux.uz" target="_blank" rel="noopener" class="tt-link">SUB_UX</a>
+									</div>
+
+								</div>
+							</div>
+
+							<div class="footer-col tt-align-center-right">
+								<div class="footer-col-inner">
+
+									<div class="footer-social">
+										<div class="footer-social-text"><span>Obuna</span><i class="fas fa-share-alt"></i></div>
+										<div class="social-buttons">
+											<ul>
+												<li><a href="https://t.me/susys_wdg" class="magnetic-item" target="_blank" rel="noopener">Tg.</a></li>
+												<li><a href="https://instagram.com/susys_wdg" class="magnetic-item" target="_blank" rel="noopener">In</a></li>
+											</ul>
+										</div>
+									</div>
+
+								</div>
+							</div>
+
+						</div> 
+					</footer>
+		
+				</div>
+
+			</div>
+
+
+		</main>
+
+{% endblock content%}
+        
+
